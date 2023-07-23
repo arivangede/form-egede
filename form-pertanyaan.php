@@ -5,7 +5,7 @@ session_start();
 if (isset($_POST["submit"])) {
     if (input_data($_POST) > 0) {
 $nama_surveyor = $_SESSION['username'];
-date_default_timezone_set('Asia/Jakarta');
+date_default_timezone_set('Asia/Makassar');
 $tanggal_waktu = date('Y-m-d H:i'); // Ambil tanggal dan waktu saat ini
 
         echo "
