@@ -4,7 +4,7 @@
 
 
 //koneksi ke database
-$conn = mysqli_connect("localhost","root","root","form-egede");
+$conn = mysqli_connect("localhost","root","","form_profil_desa_db");
 
 
 
@@ -46,7 +46,7 @@ function input_data($data){
     $status_pernikahan = htmlspecialchars($data["status_pernikahan"]);
     $agama = htmlspecialchars($data["agama"]);
     $pilihan_cacat = htmlspecialchars($data["pilihan_cacat"]);
-    $pilihan_jika_ada_cacat = ($data["pilihan_jika_ada_cacat"]);
+    $keterangan_cacat = ($data["pilihan_jika_ada_cacat"]);
     $suku_kebangsaan = htmlspecialchars($data["suku_kebangsaan"]);
     $pilihan_warga_negara = htmlspecialchars($data["pilihan_warga_negara"]);
     $pendidikan_terakhir = htmlspecialchars($data["pendidikan_terakhir"]);
@@ -58,19 +58,22 @@ function input_data($data){
     $alamat_usaha = htmlspecialchars($data["alamat_usaha"]);
     $kepemilikan_tempat_tinggal = htmlspecialchars($data["kepemilikan_tempat_tinggal"]);
     $pilihan_kondisi_rumah = htmlspecialchars($data["pilihan_kondisi_rumah"]);
-    $pilihan_jika_tidak_layak = ($data["pilihan_jika_tidak_layak"]);
+    $keterangan_rumah = ($data["keterangan_rumah"]);
     $sumber_air_bersih = htmlspecialchars($data["sumber_air_bersih"]);
     $kepemilikan_mck = htmlspecialchars($data["kepemilikan_mck"]);
     $lokasi_pembuangan_air_limbah = htmlspecialchars($data["lokasi_pembuangan_air_limbah"]);
     $ketersediaan_persampahan = htmlspecialchars($data["ketersediaan_persampahan"]);
     $jenis_pengelolaan_sampah = htmlspecialchars($data["jenis_pengelolaan_sampah"]);
+    $nama_surveyor = ($_SESSION['username']);
+    $tanggal_waktu = date('Y-m-d H:i');
 
 
     $query = "INSERT INTO data_penduduk VALUES 
     ('','$no_kk','$nama_kk','$nama','$nik','$pilihan_jk','$tempat_lahir','$tanggal_lahir','$alamat_tinggal','$dusun','$desa_kel','$kecamatan',
-    '$kota_kab','$provinsi','$golongan_darah','$no_telp_handphone','$status_pernikahan','$agama','$pilihan_cacat','$pilihan_jika_ada_cacat','$suku_kebangsaan','$pilihan_warga_negara',
+    '$kota_kab','$provinsi','$golongan_darah','$no_telp_handphone','$status_pernikahan','$agama','$pilihan_cacat','$keterangan_cacat','$suku_kebangsaan','$pilihan_warga_negara',
     '$pendidikan_terakhir','$pekerjaan','$penghasilan','$pilihan_kepemilikan_usaha',' $pilihan_jika_ada','$nama_usaha','$alamat_usaha','$kepemilikan_tempat_tinggal',
-    '$pilihan_kondisi_rumah','$pilihan_jika_tidak_layak','$sumber_air_bersih','$kepemilikan_mck','$lokasi_pembuangan_air_limbah','$ketersediaan_persampahan','$jenis_pengelolaan_sampah')";
+    '$pilihan_kondisi_rumah','$keterangan_rumah','$sumber_air_bersih','$kepemilikan_mck','$lokasi_pembuangan_air_limbah','$ketersediaan_persampahan','$jenis_pengelolaan_sampah','$nama_surveyor',
+    '$tanggal_waktu')";
 
     mysqli_query($conn, $query);
 
@@ -114,13 +117,14 @@ function edit_data($data){
     $alamat_usaha = htmlspecialchars($data["alamat_usaha"]);
     $kepemilikan_tempat_tinggal = htmlspecialchars($data["kepemilikan_tempat_tinggal"]);
     $pilihan_kondisi_rumah = htmlspecialchars($data["pilihan_kondisi_rumah"]);
-    $pilihan_jika_tidak_layak = ($data["pilihan_jika_tidak_layak"]);
+    $keterangan_rumah = ($data["keterangan_rumah"]);
     $sumber_air_bersih = htmlspecialchars($data["sumber_air_bersih"]);
     $kepemilikan_mck = htmlspecialchars($data["kepemilikan_mck"]);
     $lokasi_pembuangan_air_limbah = htmlspecialchars($data["lokasi_pembuangan_air_limbah"]);
     $ketersediaan_persampahan = htmlspecialchars($data["ketersediaan_persampahan"]);
     $jenis_pengelolaan_sampah = htmlspecialchars($data["jenis_pengelolaan_sampah"]);
-
+    $nama_surveyor = ($_SESSION['username']);
+    $tanggal_waktu = date('Y-m-d H:i');
 
     $query = "UPDATE data_penduduk SET 
     no_kk = '$no_kk',
@@ -153,12 +157,14 @@ function edit_data($data){
     alamat_usaha = '$alamat_usaha',
     kepemilikan_tempat_tinggal = '$kepemilikan_tempat_tinggal',
     kondisi_karakteristik_rumah_tinggal = '$pilihan_kondisi_rumah',
-    keterangan_rumah = '$pilihan_jika_tidak_layak',
+    keterangan_rumah = '$keterangan_rumah',
     sumber_air_bersih = '$sumber_air_bersih',
     kepemilikan_mck = '$kepemilikan_mck',
     lokasi_pembuangan_air_limbah = '$lokasi_pembuangan_air_limbah',
     ketersediaan_wadah_persampahan = '$ketersediaan_persampahan',
-    jenis_pengelolaan_sampah ='$jenis_pengelolaan_sampah' 
+    jenis_pengelolaan_sampah ='$jenis_pengelolaan_sampah', 
+    nama_surveyor = '$nama_surveyor',
+    tanggal_waktu = '$tanggal_waktu'
     WHERE id = $id ";
 
     mysqli_query($conn, $query);

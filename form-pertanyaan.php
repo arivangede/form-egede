@@ -1,8 +1,12 @@
 <?php
 require 'fungsi/functions.php';
+session_start();
 
 if (isset($_POST["submit"])) {
     if (input_data($_POST) > 0) {
+$nama_surveyor = $_SESSION['username'];
+date_default_timezone_set('Asia/Jakarta');
+$tanggal_waktu = date('Y-m-d H:i'); // Ambil tanggal dan waktu saat ini
 
         echo "
         <script>
@@ -337,7 +341,7 @@ if (isset($_POST["submit"])) {
                             <div class="pilihan">
                                 <input type="radio" name="pilihan_kondisi_rumah" id="tidak-layak-huni" value="tidak layak huni">
                                 <label for="tidak-layak-huni">Tidak Layak Huni</label>
-                                <select name="pilihan_jika_tidak_layak" id="pilihan-jika-tidak-layak-huni">
+                                <select name="keterangan_rumah" id="pilihan-jika-tidak-layak-huni">
                                     <option value="-">- Pilih -</option>
                                     <option value="Atap Rusak/Bocor">Atap Rusak/Bocor</option>
                                     <option value="Lantai Berupa Tanah">Lantai Berupa Tanah</option>

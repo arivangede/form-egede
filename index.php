@@ -141,6 +141,8 @@ if (isset($_POST["cari"])) {
                             <th>Lokasi Pembuangan Air Limbah</th>
                             <th>Ketersediaan Wadah Persampahan</th>
                             <th>Jenis Pengelolaan Sampah</th>
+                            <th>Nama Surveyor</th>
+                            <th>Tanggal</th>
 
                         </tr>
                     </thead>
@@ -189,6 +191,8 @@ if (isset($_POST["cari"])) {
                                 <td><?php echo $row["lokasi_pembuangan_air_limbah"] ?></td>
                                 <td><?php echo $row["ketersediaan_wadah_persampahan"] ?></td>
                                 <td><?php echo $row["jenis_pengelolaan_sampah"] ?></td>
+                                <td><?php echo $row["nama_surveyor"] ?></td>
+                                <td><?php echo $row["tanggal_waktu"] ?></td>
 
                             </tr>
                             <?php $i++; ?>

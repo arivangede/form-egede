@@ -20,7 +20,9 @@ if (isset($_POST["button-login"])) {
 
         header('Location: index.php');
       } elseif ($row['kategori'] == 'surveyor') {
-
+        session_start();
+        $_SESSION['username'] = $username;
+        var_dump($username);
         header('Location: pilih-region.php');
       }
       exit;
