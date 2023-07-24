@@ -142,7 +142,7 @@ if (isset($_POST["cari"])) {
                             <th>Ketersediaan Wadah Persampahan</th>
                             <th>Jenis Pengelolaan Sampah</th>
                             <th>Nama Surveyor</th>
-                            <th>Tanggal</th>
+                            <th>Tanggal/Waktu Submit</th>
 
                         </tr>
                     </thead>

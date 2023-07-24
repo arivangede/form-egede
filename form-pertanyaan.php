@@ -2,11 +2,15 @@
 require 'fungsi/functions.php';
 session_start();
 
+if (!isset($_SESSION['login'])) {
+    header('Location: login.php');
+}
+
 if (isset($_POST["submit"])) {
     if (input_data($_POST) > 0) {
-$nama_surveyor = $_SESSION['username'];
-date_default_timezone_set('Asia/Makassar');
-$tanggal_waktu = date('Y-m-d H:i'); // Ambil tanggal dan waktu saat ini
+        $nama_surveyor = $_SESSION['username'];
+        date_default_timezone_set('Asia/Singapore');
+        $tanggal_waktu = date('Y-m-d H:i:s'); // Ambil tanggal dan waktu saat ini
 
         echo "
         <script>
@@ -24,6 +28,11 @@ $tanggal_waktu = date('Y-m-d H:i'); // Ambil tanggal dan waktu saat ini
     ";
     }
 }
+
+$kabupaten = $_SESSION['kabupaten'];
+$kecamatan = $_SESSION['kecamatan'];
+$desa = $_SESSION['desa'];
+$dusun = $_SESSION['dusun'];
 
 
 ?>
@@ -70,7 +79,7 @@ $tanggal_waktu = date('Y-m-d H:i'); // Ambil tanggal dan waktu saat ini
                     <form action="" method="post">
                         <div class="pertanyaan">
                             <label for="">No. KK<span>*</span></label>
-                            <input name="no_kk" type="text" placeholder="Masukan No KK" id="no-kk" value="">
+                            <input name="no_kk" type="text" placeholder="Masukan No KK" id="no-kk" value="" required>
                         </div>
                         <div class="pertanyaan">
                             <label for="">Nama Kepala Keluarga<span>*</span></label>
@@ -111,23 +120,23 @@ $tanggal_waktu = date('Y-m-d H:i'); // Ambil tanggal dan waktu saat ini
                         </div>
                         <div class="pertanyaan">
                             <label>Dusun<span>*</span></label>
-                            <input name="dusun" type="text" id="dusun" placeholder="Masukan Dusun" value="" required>
+                            <input name="dusun" type="text" id="dusun" placeholder="Masukan Dusun" value="<?= $dusun; ?>" required>
                         </div>
                         <div class="pertanyaan">
                             <label>Desa/Kel<span>*</span></label>
-                            <input name="desa_kel" type="text" id="desa-kelurahan" placeholder="Masukan Desa/Kelurahan" value="" required>
+                            <input name="desa_kel" type="text" id="desa-kelurahan" placeholder="Masukan Desa/Kelurahan" value="<?= $desa; ?>" required>
                         </div>
                         <div class="pertanyaan">
                             <label>Kecamatan<span>*</span></label>
-                            <input name="kecamatan" type="text" id="kecamatan" placeholder="Masukan Kecamatan" value="" required>
+                            <input name="kecamatan" type="text" id="kecamatan" placeholder="Masukan Kecamatan" value="<?= $kecamatan; ?>" required>
                         </div>
                         <div class="pertanyaan">
                             <label>Kota/Kab<span>*</span></label>
-                            <input name="kota_kab" type="text" id="kota-kab" placeholder="Masukan Kota/Kabupaten" value="" required>
+                            <input name="kota_kab" type="text" id="kota-kab" placeholder="Masukan Kota/Kabupaten" value="<?= $kabupaten; ?>" required>
                         </div>
                         <div class="pertanyaan">
                             <label>Provinsi<span>*</span></label>
-                            <input name="provinsi" type="text" id="provinsi" placeholder="Masukan Provinsi" value="" required>
+                            <input name="provinsi" type="text" id="provinsi" placeholder="Masukan Provinsi" value="Bali" required>
                         </div>
                         <div class="pertanyaan">
                             <label>Golongan Darah<span>*</span></label>
@@ -306,11 +315,11 @@ $tanggal_waktu = date('Y-m-d H:i'); // Ambil tanggal dan waktu saat ini
                     </div>
                     <div class="pertanyaan">
                         <label>Nama Usaha<span>*</span></label>
-                        <input name="nama_usaha" type="text" id="nama-usaha" placeholder="Masukan Nama Usaha" value="" required>
+                        <input name="nama_usaha" type="text" id="nama-usaha" placeholder="Masukan Nama Usaha" value="" required disabled>
                     </div>
-                    <div class="pertanyaan">
+                    <div class="pertanyaan ">
                         <label>Alamat Usaha<span>*</span></label>
-                        <input name="alamat_usaha" type="text" id="alamat-usaha" placeholder="Masukan Alamat Usaha" value="" required>
+                        <input name="alamat_usaha" type="text" id="alamat-usaha" placeholder="Masukan Alamat Usaha" value="" required disabled>
                     </div>
                 </div>
             </div>
@@ -396,8 +405,8 @@ $tanggal_waktu = date('Y-m-d H:i'); // Ambil tanggal dan waktu saat ini
                     </div>
                     <div class="pertanyaan">
                         <label for="">Jenis Pengelolaan Sampah<span>*</span></label>
-                        <select name="jenis_pengelolaan_sampah" id="jenis-pengelolaan-sampah">
-                            <option value="-">- Pilih -</option>
+                        <select name="jenis_pengelolaan_sampah" id="jenis-pengelolaan-sampah" required>
+                            <option value="">- Pilih -</option>
                             <option value="Swakelola oleh Banjar/Dusun/Desa">Swakelola oleh Banjar/Dusun/Desa</option>
                             <option value="Pengelolaan Sendiri 3R(Reuse,Reduce,Recycle)">Pengelolaan Sendiri 3R(Reuse,Reduce,Recycle)</option>
                             <option value="Tidak Ada Pengelolaan">Tidak Ada Pengelolaan</option>
