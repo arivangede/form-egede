@@ -1,7 +1,10 @@
 <?php
 // Koneksi ke database
 require 'fungsi/functions.php';
-
+session_start();
+if (!isset($_SESSION['login'])) {
+  header('Location: login.php');
+}
 
 
 // Mengambil data kecamatan dari tabel data-region
@@ -12,6 +15,11 @@ $conn->close();
 
 
 if (isset($_POST["submit"])) {
+  $_SESSION['kabupaten'] = "Denpasar";
+  $_SESSION['kecamatan'] = $_POST['kecamatan'];
+  $_SESSION['desa'] = $_POST['desa'];
+  $_SESSION['dusun'] = $_POST['dusun'];
+
   header('Location:form-pertanyaan.php');
 }
 ?>

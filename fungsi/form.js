@@ -104,14 +104,20 @@ if (formPertanyaan) {
   const radioAdaUsaha = document.getElementById("ada-usaha");
   const radioTidakAdaUsaha = document.getElementById("tidak-ada-usaha");
   const selectUsaha = document.getElementById("pilihan-jika-ada-usaha");
+  const inputNamaUsaha = document.getElementById("nama-usaha");
+  const inputAlamatUsaha = document.getElementById("alamat-usaha");
 
   // Tambahkan event listener untuk perubahan pada elemen radio
   radioAdaUsaha.addEventListener("change", function () {
     // Jika elemen radio "ada" dipilih, aktifkan elemen select
     if (radioAdaUsaha.checked) {
       selectUsaha.disabled = false;
+      inputNamaUsaha.disabled = false;
+      inputAlamatUsaha.disabled = false;
     } else {
       selectUsaha.disabled = true;
+      inputNamaUsaha.disabled = true;
+      inputAlamatUsaha.disabled = true;
     }
   });
 
@@ -119,16 +125,24 @@ if (formPertanyaan) {
     // Jika elemen radio "tidak ada" dipilih, nonaktifkan elemen select
     if (radioTidakAdaUsaha.checked) {
       selectUsaha.disabled = true;
+      inputNamaUsaha.disabled = true;
+      inputAlamatUsaha.disabled = true;
     } else {
       selectUsaha.disabled = false;
+      inputNamaUsaha.disabled = false;
+      inputAlamatUsaha.disabled = false;
     }
   });
 
   // Cek status radio saat halaman dimuat
   if (radioAdaUsaha.checked) {
     selectUsaha.disabled = false;
+    inputNamaUsaha.disabled = false;
+    inputAlamatUsaha.disabled = false;
   } else if (radioTidakAdaUsaha.checked) {
     selectUsaha.disabled = true;
+    inputNamaUsaha.disabled = true;
+    inputAlamatUsaha.disabled = true;
   }
 
   const radioLayakHuni = document.getElementById("layak-huni");
@@ -163,3 +177,26 @@ if (formPertanyaan) {
     selectAlasanTidakLayak.disabled = false;
   }
 }
+
+// logout timer
+
+var logoutTimer;
+
+function startLogoutTimer() {
+  clearTimeout(logoutTimer);
+  logoutTimer = setTimeout(logoutUser, 7200000); // 2 jam (7200000 milidetik)
+}
+
+function resetLogoutTimer() {
+  startLogoutTimer();
+}
+
+function logoutUser() {
+  document.location.href = "fungsi/logout.php";
+}
+
+// Mulai timer ketika halaman dimuat atau pengguna berinteraksi dengan halaman.
+document.addEventListener("DOMContentLoaded", startLogoutTimer);
+document.addEventListener("mousemove", resetLogoutTimer);
+document.addEventListener("keydown", resetLogoutTimer);
+document.addEventListener("click", resetLogoutTimer);

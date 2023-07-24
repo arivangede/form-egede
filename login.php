@@ -1,6 +1,7 @@
 <?php
 require  'fungsi/functions.php';
 
+session_start();
 if (isset($_POST["button-login"])) {
 
 
@@ -17,10 +18,11 @@ if (isset($_POST["button-login"])) {
 
     if ($password === $row["password"]) {
       if ($row['kategori'] == 'admin') {
-
+        $_SESSION['login'] = true;
         header('Location: index.php');
       } elseif ($row['kategori'] == 'surveyor') {
-
+        $_SESSION['login'] = true;
+        $_SESSION['username'] = $username;
         header('Location: pilih-region.php');
       }
       exit;
