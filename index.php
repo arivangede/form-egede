@@ -112,7 +112,8 @@ if (isset($_POST["cari"])) {
                             <th>Jenis Kelamin</th>
                             <th>Tempat Lahir</th>
                             <th>Tanggal Lahir</th>
-                            <th>Alamat Tinggal</th>
+                            <th>Alamat Domisili</th>
+                            <th>Alamat KTP</th>
                             <th>Dusun</th>
                             <th>Desa/Kel</th>
                             <th>Kecamatan</th>
@@ -143,6 +144,7 @@ if (isset($_POST["cari"])) {
                             <th>Jenis Pengelolaan Sampah</th>
                             <th>Nama Surveyor</th>
                             <th>Tanggal/Waktu Submit</th>
+                            <th>koordinat</th>
 
                         </tr>
                     </thead>
@@ -162,7 +164,8 @@ if (isset($_POST["cari"])) {
                                 <td><?php echo $row["jenis_kelamin"] ?></td>
                                 <td><?php echo $row["tempat_lahir"] ?></td>
                                 <td><?php echo $row["tanggal_lahir"] ?></td>
-                                <td><?php echo $row["alamat_tinggal"] ?></td>
+                                <td><?php echo $row["alamat_domisili"] ?></td>
+                                <td><?php echo $row["alamat_ktp"] ?></td>
                                 <td><?php echo $row["dusun"] ?></td>
                                 <td><?php echo $row["desa_kel"] ?></td>
                                 <td><?php echo $row["kecamatan"] ?></td>
@@ -193,6 +196,7 @@ if (isset($_POST["cari"])) {
                                 <td><?php echo $row["jenis_pengelolaan_sampah"] ?></td>
                                 <td><?php echo $row["nama_surveyor"] ?></td>
                                 <td><?php echo $row["tanggal_waktu"] ?></td>
+                                <td><?php echo $row["koordinat"] ?></td>
 
                             </tr>
                             <?php $i++; ?>

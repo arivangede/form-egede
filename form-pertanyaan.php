@@ -115,9 +115,17 @@ $dusun = $_SESSION['dusun'];
                             <input name="tanggal_lahir" type="date" id="tempat-lahir" value="" required>
                         </div>
                         <div class="pertanyaan">
-                            <label>Alamat Tinggal<span>*</span></label>
-                            <input name="alamat_tinggal" type="text" id="alamat-tinggal" placeholder="Masukan Alamat Tinggal" value="" required>
+                            <label>Alamat Domisili<span>*</span></label>
+                            <input name="alamat_domisili" type="text" id="alamat-tinggal" placeholder="Masukan Alamat Domisili" value="" required>
                         </div>
+
+                        <!--------------------------------------------------------------------------- new konten ------------------------------------------------------------------------------------>
+                        <div class="pertanyaan">
+                            <label>Alamat Sesuai KTP<span>*</span></label>
+                            <input name="alamat_ktp" type="text" id="alamat-tinggal" placeholder="Masukan Alamat KTP" value="" required>
+                        </div>
+                        <!--------------------------------------------------------------------------- new konten ------------------------------------------------------------------------------------>
+
                         <div class="pertanyaan">
                             <label>Dusun<span>*</span></label>
                             <input name="dusun" type="text" id="dusun" placeholder="Masukan Dusun" value="<?= $dusun; ?>" required>
@@ -157,6 +165,12 @@ $dusun = $_SESSION['dusun'];
                                     <input type="radio" name="golongan_darah" id="AB" value="AB">
                                     <label for="AB">AB</label>
                                 </div>
+                                <!--------------------------------------------------------------------------- new konten ------------------------------------------------------------------------------------>
+                                <div class="pilihan">
+                                    <input type="radio" name="golongan_darah" id="non" value="Belum diketahui">
+                                    <label for="non">Belum diketahui</label>
+                                </div>
+                                <!--------------------------------------------------------------------------- new konten ------------------------------------------------------------------------------------>
                             </div>
                         </div>
                         <div class="pertanyaan">
@@ -192,6 +206,7 @@ $dusun = $_SESSION['dusun'];
                             <option value="Kristen Protestan">Kristen Protestan</option>
                             <option value="Buddha">Buddha</option>
                             <option value="Khonghucu">Khonghucu</option>
+                            <option value="Lainnya">Lainnya</option>
                         </select>
                     </div>
                     <div class="pertanyaan">
@@ -218,7 +233,20 @@ $dusun = $_SESSION['dusun'];
                     </div>
                     <div class="pertanyaan">
                         <label>Suku Kebangsaan<span>*</span></label>
-                        <input name="suku_kebangsaan" type="text" id="suku-kebangsaan" placeholder="Masukan Suku Kebangsaan" value="" required>
+                        <select name="suku_kebangsaan" id="suku_kebangsaan">
+                            <option value="-">- Pilih -</option>
+                            <option value="Bali">Bali</option>
+                            <option value="Jawa">Jawa</option>
+                            <option value="Madura">Madura</option>
+                            <option value="Melayu">Melayu</option>
+                            <option value="Sasak">Sasak</option>
+                            <option value="Bali Aga">Bali Aga</option>
+                            <option value="Tingkok">Tiongkok</option>
+                            <option value="Sunda">Sunda</option>
+                            <option value="Bugis">Bugis</option>
+                            <option value="Flores">Flores</option>
+                            <option value="Lainnya">Lainnya</option>
+                        </select>
                     </div>
                     <div class="pertanyaan">
                         <label>Kewarganegaraan<span>*</span></label>
@@ -268,6 +296,7 @@ $dusun = $_SESSION['dusun'];
                             <option value="Content Creator">Content Creator</option>
                             <option value="Petani">Petani</option>
                             <option value="Nelayan">Nelayan</option>
+                            <option value="Lainnya">Lainnya</option>
                         </select>
                     </div>
                     <div class="pertanyaan">
@@ -305,6 +334,8 @@ $dusun = $_SESSION['dusun'];
                                     <option value="Penyelenggara Acara">Penyelenggara Acara</option>
                                     <option value="Penginapan/Kos">Penginapan/Kos</option>
                                     <option value="Elektronik">Elektronik</option>
+                                    <option value="Konsultan">Konsultan</option>
+                                    <option value="Lainnya">Lainnya</option>
                                 </select>
                             </div>
                             <div class="pilihan">
@@ -338,6 +369,7 @@ $dusun = $_SESSION['dusun'];
                             <option value="Kontrak/Sewa">Kontrak/Sewa</option>
                             <option value="Bebas Sewa/Dipinjami">Bebas Sewa/Dipinjami</option>
                             <option value="Dinas">Dinas</option>
+                            <option value="lainnya">Lainnya</option>
                         </select>
                     </div>
                     <div class="pertanyaan">
@@ -355,6 +387,7 @@ $dusun = $_SESSION['dusun'];
                                     <option value="Atap Rusak/Bocor">Atap Rusak/Bocor</option>
                                     <option value="Lantai Berupa Tanah">Lantai Berupa Tanah</option>
                                     <option value="Dinding Non/Semi Permanen">Dinding Non/Semi Permanen</option>
+                                    <option value="Lainnya">Lainnya</option>
                                 </select>
                             </div>
                         </div>
@@ -366,6 +399,7 @@ $dusun = $_SESSION['dusun'];
                             <option value="PDAM">PDAM</option>
                             <option value="Sumur/Air Tanah">Sumur/Air Tanah</option>
                             <option value="PDAM dan Sumur">PDAM dan Sumur</option>
+                            <option value="Lainnya">Lainnya</option>
                         </select>
                     </div>
                     <div class="pertanyaan">
@@ -388,6 +422,7 @@ $dusun = $_SESSION['dusun'];
                             <option value="Septic Tank/Tangki Septic">Septic Tank/Tangki Septic</option>
                             <option value="IPAL/DSDP">IPAL/DSDP</option>
                             <option value="Tanah">Tanah</option>
+                            <option value="Lainnya">Lainnya</option>
                         </select>
                     </div>
                     <div class="pertanyaan">
@@ -407,11 +442,17 @@ $dusun = $_SESSION['dusun'];
                         <label for="">Jenis Pengelolaan Sampah<span>*</span></label>
                         <select name="jenis_pengelolaan_sampah" id="jenis-pengelolaan-sampah" required>
                             <option value="">- Pilih -</option>
-                            <option value="Swakelola oleh Banjar/Dusun/Desa">Swakelola oleh Banjar/Dusun/Desa</option>
+                            <option value="Swakelola oleh Dusun Desa(Pemerintah)">Swakelola oleh Dusun Desa(Pemerintah)</option>
                             <option value="Pengelolaan Sendiri 3R(Reuse,Reduce,Recycle)">Pengelolaan Sendiri 3R(Reuse,Reduce,Recycle)</option>
                             <option value="Tidak Ada Pengelolaan">Tidak Ada Pengelolaan</option>
                         </select>
                     </div>
+                    <!--------------------------------------------------------------------------- new konten ------------------------------------------------------------------------------------>
+                    <div class="pertanyaan">
+                        <label>Koordinta<span>*</span></label>
+                        <input name="koordinat" type="text" id="alamat-tinggal" placeholder="Masukan Koordinta" value="" required>
+                    </div>
+                    <!--------------------------------------------------------------------------- new konten ------------------------------------------------------------------------------------>
                 </div>
             </div>
         </section>

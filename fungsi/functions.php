@@ -4,7 +4,7 @@
 
 
 //koneksi ke database
-$conn = mysqli_connect("localhost", "root", "root", "form-egede");
+$conn = mysqli_connect("localhost", "root", "", "form_profil_desa_db");
 
 
 
@@ -35,7 +35,8 @@ function input_data($data)
     $pilihan_jk = htmlspecialchars($data["jenis_kelamin"]);
     $tempat_lahir = htmlspecialchars($data["tempat_lahir"]);
     $tanggal_lahir = htmlspecialchars($data["tanggal_lahir"]);
-    $alamat_tinggal = htmlspecialchars($data["alamat_tinggal"]);
+    $alamat_domisili = htmlspecialchars($data["alamat_domisili"]);
+    $alamat_ktp = htmlspecialchars($data["alamat_ktp"]);
     $dusun = htmlspecialchars($data["dusun"]);
     $desa_kel = htmlspecialchars($data["desa_kel"]);
     $kecamatan = htmlspecialchars($data["kecamatan"]);
@@ -66,19 +67,20 @@ function input_data($data)
     $jenis_pengelolaan_sampah = htmlspecialchars($data["jenis_pengelolaan_sampah"]);
     $nama_surveyor = ($_SESSION['username']);
     $tanggal_waktu = date('Y-m-d H:i:s');
+    $koordinat = htmlspecialchars($data["koordinat"]);
 
 
     $query = "INSERT INTO data_penduduk 
-    (no_kk, nama_kepala_keluarga, nama, nik, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat_tinggal, dusun, desa_kel, kecamatan,
+    (no_kk, nama_kepala_keluarga, nama, nik, jenis_kelamin, tempat_lahir, tanggal_lahir, alamat_domisili, alamat_ktp, dusun, desa_kel, kecamatan,
     kota_kab, provinsi, golongan_darah, no_telp_handphone, status_pernikahan, agama, cacat_fisik_mental, keterangan_cacat, suku_kebangsaan, kewarganegaraan,
     pendidikan_terakhir, pekerjaan, penghasilan, kepemilikan_usaha, keterangan_usaha, nama_usaha, alamat_usaha, kepemilikan_tempat_tinggal,
     kondisi_karakteristik_rumah_tinggal, keterangan_rumah, sumber_air_bersih, kepemilikan_mck, lokasi_pembuangan_air_limbah, ketersediaan_wadah_persampahan, jenis_pengelolaan_sampah, nama_surveyor,
-    tanggal_waktu) VALUES 
-    ('$no_kk','$nama_kk','$nama','$nik','$pilihan_jk','$tempat_lahir','$tanggal_lahir','$alamat_tinggal','$dusun','$desa_kel','$kecamatan',
+    tanggal_waktu,koordinat) VALUES 
+    ('$no_kk','$nama_kk','$nama','$nik','$pilihan_jk','$tempat_lahir','$tanggal_lahir','$alamat_domisili','$alamat_ktp','$dusun','$desa_kel','$kecamatan',
     '$kota_kab','$provinsi','$golongan_darah','$no_telp_handphone','$status_pernikahan','$agama','$pilihan_cacat','$keterangan_cacat','$suku_kebangsaan','$pilihan_warga_negara',
     '$pendidikan_terakhir','$pekerjaan','$penghasilan','$pilihan_kepemilikan_usaha',' $pilihan_jika_ada','$nama_usaha','$alamat_usaha','$kepemilikan_tempat_tinggal',
     '$pilihan_kondisi_rumah','$keterangan_rumah','$sumber_air_bersih','$kepemilikan_mck','$lokasi_pembuangan_air_limbah','$ketersediaan_persampahan','$jenis_pengelolaan_sampah','$nama_surveyor',
-    '$tanggal_waktu')";
+    '$tanggal_waktu','$koordinat')";
 
     mysqli_query($conn, $query);
 
@@ -100,7 +102,8 @@ function edit_data($data)
     $pilihan_jk = htmlspecialchars($data["jenis_kelamin"]);
     $tempat_lahir = htmlspecialchars($data["tempat_lahir"]);
     $tanggal_lahir = htmlspecialchars($data["tanggal_lahir"]);
-    $alamat_tinggal = htmlspecialchars($data["alamat_tinggal"]);
+    $alamat_domisili = htmlspecialchars($data["alamat_domisili"]);
+    $alamat_ktp = htmlspecialchars($data["alamat_ktp"]);
     $dusun = htmlspecialchars($data["dusun"]);
     $desa_kel = htmlspecialchars($data["desa_kel"]);
     $kecamatan = htmlspecialchars($data["kecamatan"]);
@@ -131,6 +134,7 @@ function edit_data($data)
     $jenis_pengelolaan_sampah = htmlspecialchars($data["jenis_pengelolaan_sampah"]);
     $nama_surveyor = ($_SESSION['username']);
     $tanggal_waktu = date('Y-m-d H:i');
+    $koordinat = htmlspecialchars($data["koordinat"]);
 
     $query = "UPDATE data_penduduk SET 
     no_kk = '$no_kk',
@@ -140,7 +144,8 @@ function edit_data($data)
     jenis_kelamin = '$pilihan_jk',
     tempat_lahir = '$tempat_lahir',
     tanggal_lahir = '$tanggal_lahir',
-    alamat_tinggal = '$alamat_tinggal',
+    alamat_domisili = '$alamat_domisili',
+    alamat_ktp = '$alamat_ktp',
     dusun = '$dusun',
     desa_kel = '$desa_kel',
     kecamatan = '$kecamatan',
@@ -170,7 +175,8 @@ function edit_data($data)
     ketersediaan_wadah_persampahan = '$ketersediaan_persampahan',
     jenis_pengelolaan_sampah ='$jenis_pengelolaan_sampah', 
     nama_surveyor = '$nama_surveyor',
-    tanggal_waktu = '$tanggal_waktu'
+    tanggal_waktu = '$tanggal_waktu',
+    koordinat = '$koordinat'
     WHERE id = $id ";
 
     mysqli_query($conn, $query);
